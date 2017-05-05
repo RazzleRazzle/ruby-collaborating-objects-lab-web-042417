@@ -20,16 +20,13 @@ class MP3Importer
     @files.uniq
   end
 
-  def parser
-  end
-
   def import
     self.files.each do |file|
-      words = file.split(/.mp3/)
-      parse = words[0].split(/ - /)
-      Song.new(parse[1])
-
+      Song.new_by_filename(file)
     end
   end
-
 end
+# info = (file.split(/.mp3/))[0].split(/ - /)
+# a = Artist.find_or_create_by_name(info[0])
+# a.add_song(info[1])
+# a.save
